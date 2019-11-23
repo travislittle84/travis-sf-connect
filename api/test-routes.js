@@ -43,7 +43,7 @@ router.get('/accounts/find/:field/:value', async (req, res) => {
     }
 })
 
-router.post('/account/create', (req, res) => {
+router.post('/account/create', async (req, res) => {
     const data = req.body
     try {
         const newAccount = await TestDB.createAccount(data)
