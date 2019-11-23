@@ -1,0 +1,33 @@
+{
+  "name": "travis-sf-connect",
+  "version": "1.0.0",
+  "description": "travis testing sf connect with free sf dev org",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env DB_ENV=testing jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/travislittle84/travis-sf-connect.git"
+  },
+  "author": "travis little",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/travislittle84/travis-sf-connect/issues"
+  },
+  "homepage": "https://github.com/travislittle84/travis-sf-connect#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crossenv": "0.0.2-security",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "knex": "^0.20.2",
+    "pg": "^7.14.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.1",
+    "supertest": "^4.0.2"
+  }
+}
