@@ -48,6 +48,7 @@ router.get('/accounts/find/:field/:value', async (req, res) => {
 router.post('/account/create', async (req, res) => {
     const data = req.body
     data.Merchant_Account_ID__c = uniqueID()
+    console.log(data)
     try {
         const newAccount = await TestDB.createAccount(data)
         res.status(200).json(newAccount)
