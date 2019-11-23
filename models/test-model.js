@@ -5,5 +5,5 @@ module.exports = {
 }
 
 function find() {
-    return db('accounts')
+    return db('account')
 }
