@@ -5,5 +5,5 @@ module.exports = {
 }
 
 function find() {
-    return db('account')
+    return db('salesforce.account')
 }

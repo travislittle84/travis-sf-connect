@@ -2,6 +2,10 @@ const router = require('express').Router()
 const TestDB = require('../models/test-model')
 
 router.get('/', (req, res) => {
+    res.send('Hello')
+})
+
+router.get('/accounts', (req, res) => {
     TestDB.find()
         .then(account => {
             res.status(200).json(account)
