@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Cases = require('../models/case-model')
-const Contacts = require('../models/Contact-model')
+const Contacts = require('../models/contact-model')
 const Accounts = require('../models/account-model')
 const generateConnectID = require('uniqid')
 
