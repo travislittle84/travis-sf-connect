@@ -8,15 +8,15 @@ module.exports = {
 }
 
 function find() {
-    return db('salesforce.cases')
+    return db('salesforce.case')
 }
 
 function findBy(filter) {
-    return db('salesforce.cases').where(filter)
+    return db('salesforce.case').where(filter)
 }
 
 function findById(id) {
-    return db('salesforce.cases').where({id}).first()
+    return db('salesforce.case').where({id}).first()
 }
 
 function createCase(data) {
