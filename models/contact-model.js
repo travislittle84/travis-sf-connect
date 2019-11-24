@@ -35,8 +35,8 @@ async function createAccountWithContact(accData, conData) {
     const accConnectID = accData.merchant_account_id__c
     const conConnectID = conData.contact_connect_id__c
     try {
-        const newAccount = db('salesforce.account').insert(accData)
-        const newContact = db('salesforce.contact').insert(conData)
+        const newAccount = await db('salesforce.account').insert(accData)
+        const newContact = await db('salesforce.contact').insert(conData)
         return { newAccount, newContact }
     } catch(error) {
         return error
