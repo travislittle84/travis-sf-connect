@@ -13,6 +13,7 @@ function find() {
 }
 
 function findBy(filter) {
+    console.log('test', filter)
     return db('salesforce.contact').where(filter)
 }
 

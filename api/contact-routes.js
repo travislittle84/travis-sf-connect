@@ -33,6 +33,8 @@ router.get('/find/:field/:value', async (req, res) => {
         field,
         value
     }
+    console.log('route test', filter)
+    console.log('route test 2', req.params)
     try {
         const contact = await Contacts.findBy(filter)
         res.status(200).json(contact)
