@@ -56,8 +56,14 @@ router.post('/create', async (req, res) => {
 router.post('/create-with-account', async (req, res) => {
     try {
         const { accData, conData } = req.body
-        accData.merchant_account_id__c = generateConnectID()
-        conData.contact_connect_id__c = generateConnectID()
+        const accConnectID = generateConnectID()
+        const conConnectID = generateConnectID()
+
+        accData.merchant_account_id__c = accConnectID
+        
+        conData.contact_connect_id__c = conConnectID
+        conData.account__merchant_account_id__c = accConnectID
+
         const newData = await Contacts.createAccountWithContact(accData, conData)
         res.status(200).json(newData)
     } catch (error) {
