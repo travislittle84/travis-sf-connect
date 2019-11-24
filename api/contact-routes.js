@@ -27,11 +27,10 @@ router.get('/find/id/:id', async (req, res) => {
 
 })
 
-router.get('/find/:field/:value', async (req, res) => {
-    const { field, value } = req.params
+router.get('/search', async (req, res) => {
+    const { field, value } = req.query
     const filter = { [field]: value }
-    console.log('route test', filter)
-    console.log('route test 2', req.params)
+
     try {
         const contact = await Contacts.findBy(filter)
         res.status(200).json(contact)
