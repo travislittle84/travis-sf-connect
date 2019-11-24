@@ -15,9 +15,7 @@ function find() {
 
 function findBy(filter) {
     console.log('test', filter)
-    return db('salesforce.contact').where(
-        knex.raw(`${filter.field} ILIKE ${filter.value}`)
-    )
+    return db('salesforce.contact').whereRaw(`${filter.field} ILIKE ${filter.value}`)
 }
 
 function findById(id) {
