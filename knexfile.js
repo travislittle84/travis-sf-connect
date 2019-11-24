@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-
+const pw = process.env.THING
 module.exports = {
 
   production: {
@@ -17,7 +17,14 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection:'postgres://localhost/sf-test',
+    connection: {
+      host: '127.0.0.1',
+      port: 5482,
+      database: 'sf-test',
+      user: 'postgres',
+      password: 'test'
+
+    },
     migrations: {
       directory: './database/migrations'
     },
