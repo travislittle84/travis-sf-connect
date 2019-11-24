@@ -1,14 +1,13 @@
 const router = require('express').Router()
-const TestDB = require('../models/test-model')
+const Accounts = require('../models/account-model')
 
-const uniqueID = require('uniqid')
 
 router.get('/', (req, res) => {
     res.send('Hello')
 })
 
-router.get('/accounts', (req, res) => {
-    TestDB.find()
+router.get('/find/all', (req, res) => {
+    Accounts.find()
         .then(account => {
             res.status(200).json(account)
         })
@@ -20,39 +19,39 @@ router.get('/accounts', (req, res) => {
         })
 })
 
-router.get('/accounts/find/id/:id', async (req, res) => {
+router.get('/find/id/:id', async (req, res) => {
     const { id } = req.params
     try {
-        const account = await TestDB.findById(id)
+        const account = await Accounts.findById(id)
         res.status(200).json(account)
-    } catch(error) {
+    } catch (error) {
         res.status(500).json(error)
     }
-    
+
 })
 
-router.get('/accounts/find/:field/:value', async (req, res) => {
+router.get('/find/:field/:value', async (req, res) => {
     const { field, value } = req.params
     const filter = {
         field,
         value
     }
     try {
-        const account = await TestDB.findBy(filter)
+        const account = await Accounts.findBy(filter)
         res.status(200).json(account)
-    } catch(error) {
+    } catch (error) {
         res.status(500).json(error)
     }
 })
 
-router.post('/account/create', async (req, res) => {
+router.post('/create', async (req, res) => {
     const data = req.body
     // data.Merchant_Account_ID__c = uniqueID()
     console.log(data)
     try {
-        const newAccount = await TestDB.createAccount(data)
+        const newAccount = await Accounts.createAccount(data)
         res.status(200).json(newAccount)
-    } catch(error) {
+    } catch (error) {
         res.status(500).json(error)
     }
 })

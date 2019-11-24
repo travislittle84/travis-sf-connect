@@ -5,12 +5,12 @@ const cors = require('cors')
 
 const server = express()
 
-const testRoutes = require('./test-routes.js')
+const accountRoutes = require('./account-routes.js')
 
 server.use(helmet())
 server.use(express.json())
 server.use(cors())
 
-server.use('/test', testRoutes)
+server.use('/api/sf/account', accountRoutes)
 
 module.exports = server
