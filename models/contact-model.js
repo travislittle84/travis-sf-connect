@@ -15,6 +15,8 @@ function find() {
 
 function findBy(filter) {
     console.log('test', filter)
+    const queryString = `${filter.field} ILIKE ${filter.value}`
+    console.log('test2', queryString)
     return db('salesforce.contact').whereRaw(`${filter.field} ILIKE ${filter.value}`)
 }
 
