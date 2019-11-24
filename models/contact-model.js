@@ -1,4 +1,5 @@
 const db = require('../database/dbConfig.js')
+const knex = require('knex')
 
 module.exports = {
     find,
@@ -14,7 +15,9 @@ function find() {
 
 function findBy(filter) {
     console.log('test', filter)
-    return db('salesforce.contact').where(filter)
+    return db('salesforce.contact').where(
+        knex.raw(`${filter.field} ILIKE ${filter.value}`)
+    )
 }
 
 function findById(id) {
