@@ -1,22 +1,19 @@
 const router = require('express').Router()
 const Accounts = require('../models/account-model')
+const generateConnecID = require('uniqid')
 
 
 router.get('/', (req, res) => {
     res.send('Hello')
 })
 
-router.get('/find/all', (req, res) => {
-    Accounts.find()
-        .then(account => {
-            res.status(200).json(account)
-        })
-        .catch(error => {
-            res.status(500).json({
-                message: 'DB error',
-                error
-            })
-        })
+router.get('/find/all', async (req, res) => {
+    try {
+        const accounts = await Accounts.find()
+        res.status(200).json(accounts)
+    } catch (error) {
+        res.status(500).json(error)
+    }
 })
 
 router.get('/find/id/:id', async (req, res) => {
@@ -46,7 +43,7 @@ router.get('/find/:field/:value', async (req, res) => {
 
 router.post('/create', async (req, res) => {
     const data = req.body
-    // data.Merchant_Account_ID__c = uniqueID()
+    data.merchant_account_id__c = generateConnecID()
     console.log(data)
     try {
         const newAccount = await Accounts.createAccount(data)
