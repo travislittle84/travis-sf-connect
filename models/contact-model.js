@@ -13,7 +13,6 @@ function find() {
 }
 
 function findBy(filter) {
-    console.log('test', filter)
     return db('salesforce.contact').where(filter)
 }
 
@@ -33,8 +32,6 @@ function createContact(data) {
 }
 
 async function createAccountWithContact(accData, conData) {
-    const accConnectID = accData.merchant_account_id__c
-    const conConnectID = conData.contact_connect_id__c
     try {
         const newAccount = await db('salesforce.account').insert(accData)
         const newContact = await db('salesforce.contact').insert(conData)
