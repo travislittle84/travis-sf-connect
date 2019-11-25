@@ -22,7 +22,7 @@ function findById(id) {
 
 async function createCase(data) {
     try {
-        const newCase = await db('salesforce.case').insert(data)
+        const newCase = await db('salesforce.case').insert(data).returning('*')
         return newCase
     } catch(error) {
         return error

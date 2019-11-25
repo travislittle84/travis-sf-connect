@@ -20,7 +20,7 @@ function findById(id) {
 }
 
 function createAccount(data) {
-    return db('salesforce.account').insert(data)
+    return db('salesforce.account').insert(data).returning('*')
         .then(account => {
             return account
         })

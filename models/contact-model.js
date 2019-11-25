@@ -21,7 +21,7 @@ function findById(id) {
 }
 
 function createContact(data) {
-    return db('salesforce.contact').insert(data)
+    return db('salesforce.contact').insert(data).returning('*')
         .then(contact => {
             return contact
         })
@@ -33,8 +33,8 @@ function createContact(data) {
 
 async function createAccountWithContact(accData, conData) {
     try {
-        const newAccount = await db('salesforce.account').insert(accData)
-        const newContact = await db('salesforce.contact').insert(conData)
+        const newAccount = await db('salesforce.account').insert(accData).returning('*')
+        const newContact = await db('salesforce.contact').insert(conData).returning('*')
         return { newAccount, newContact }
     } catch(error) {
         return error
