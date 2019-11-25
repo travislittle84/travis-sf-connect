@@ -21,6 +21,7 @@ function findById(id) {
 
 async function createCase(data) {
     try {
+        console.log('in db test', data)
         const newCase = await db('salesforce.case').insert(data)
         return newCase
     } catch(error) {

@@ -46,8 +46,6 @@ router.post('/create', async (req, res) => {
     // Generate and inject ConnectID
     data.case_connect_id__c = generateConnectID()
 
-
-    console.log(data)
     try {
         const newCase = await Cases.createCase()
         res.status(200).json(newCase)
