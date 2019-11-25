@@ -36,8 +36,7 @@ async function updateCase(external_id, data) {
             db('salesforce.case')
             .where({ case_connect_id__c: external_id })
             .update(data)
-            // .select('*')
-            // .where({ case_connect_id__c: external_id })
+            .returning('*')
 
         return updatedCase
     } catch(error) {
