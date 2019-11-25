@@ -4,7 +4,8 @@ module.exports = {
     find,
     findBy,
     findById,
-    createCase
+    createCase,
+    updateCase
 }
 
 function find() {
@@ -21,11 +22,25 @@ function findById(id) {
 
 async function createCase(data) {
     try {
-        console.log('in db test', data)
         const newCase = await db('salesforce.case').insert(data)
         return newCase
     } catch(error) {
         return error
     }
             
+}
+
+async function updateCase(external_id, data) {
+    try {
+        const updatedCase = await 
+            db('salesforce.case')
+            .where({ case_connect_id__c: external_id })
+            .update(data)
+            .select('*')
+            .where({ case_connect_id__c: external_id })
+
+        return updatedCase
+    } catch(error) {
+        return error
+    }
 }

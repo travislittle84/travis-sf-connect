@@ -54,4 +54,15 @@ router.post('/create', async (req, res) => {
     }
 })
 
+router.put('/update/:external_id', async (req, res) => {
+    const data = req.body
+    const { external_id } = req.params
+    try {
+        const updatedCase = await Cases.updateCase(external_id, data)
+        res.status(200).json(updatedCase)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
 module.exports = router
